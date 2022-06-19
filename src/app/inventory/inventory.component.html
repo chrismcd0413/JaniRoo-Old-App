@@ -1,0 +1,39 @@
+<app-header title="{{locationName}}">
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/"></ion-back-button>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-spinner slot="icon-only" *ngIf="!formLoaded"></ion-spinner>
+  </ion-buttons>
+</app-header>
+<ion-content>
+<ion-grid>
+  <ion-row *ngIf="formLoaded && items.length === 0">
+    <h2>Nothing to Submit</h2>
+  </ion-row>
+  <ion-row *ngIf="formLoaded && items.length === null">
+    <h2>Error</h2>
+  </ion-row>
+  <ion-row *ngIf="!formLoaded">
+    <h2>Loading...</h2>
+  </ion-row>
+  <ion-row *ngIf="formLoaded && items.length > 0">
+    <ion-col>
+      <form (ngSubmit)="submitSnapshot()" [formGroup]="form">
+        <ion-list>
+          <ion-item *ngFor="let item of items" lines="full" class="listItem">
+            <app-snapshot-item [item]="item" [form]="form"></app-snapshot-item>
+          </ion-item>
+        </ion-list>
+      </form>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="formLoaded && items.length > 0">
+    <ion-col>
+      <ion-button (click)="submitSnapshot()" [disabled]="!form.valid">Submit Inventory</ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-grid>
+
+</ion-content>

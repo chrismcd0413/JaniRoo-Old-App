@@ -1,0 +1,12 @@
+<app-header title="Chat">
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false" menuId="first"></ion-menu-button>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-spinner slot="icon-only" *ngIf="isLoading"></ion-spinner>
+  </ion-buttons>
+</app-header>
+
+      <iframe #iframe (load)="loadingFinished()" id="iframe" [src]="url" height="100%" width="100%" style="border:0;" scrolling="no">
+      </iframe>
+

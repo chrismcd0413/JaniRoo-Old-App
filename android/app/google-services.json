@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "478805023518",
+    "project_id": "jmcleanco-9c1ab",
+    "storage_bucket": "jmcleanco-9c1ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478805023518:android:2e510db6acf7692573070f",
+        "android_client_info": {
+          "package_name": "com.jmcleanco.work"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478805023518-inhoili51k5ec2jtkbvd4cupdhd3aiem.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6bChzNrtnH5zBOSIGYXtPNYJpAVHRTGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478805023518-inhoili51k5ec2jtkbvd4cupdhd3aiem.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478805023518:android:4b49ba60eef3c5e373070f",
+        "android_client_info": {
+          "package_name": "com.jmcleanco.workapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478805023518-inhoili51k5ec2jtkbvd4cupdhd3aiem.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6bChzNrtnH5zBOSIGYXtPNYJpAVHRTGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478805023518-inhoili51k5ec2jtkbvd4cupdhd3aiem.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

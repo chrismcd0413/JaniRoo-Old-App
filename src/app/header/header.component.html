@@ -1,0 +1,27 @@
+<!-- <ion-menu side="start" menuId="main" contentId="mainContent">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content id="mainContent">
+    <ion-list>
+      <ion-item lines="none" routerLink="/dashboard">
+        <ion-icon name="speedometer-outline" slot="start"></ion-icon>
+        <ion-label>Dashboard</ion-label>
+      </ion-item>
+      <ion-item lines="none" routerLink="/dashboard">
+        <ion-icon name="speedometer-outline" slot="start"></ion-icon>
+        <ion-label>Dashboard</ion-label>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-menu> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ng-content></ng-content>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>

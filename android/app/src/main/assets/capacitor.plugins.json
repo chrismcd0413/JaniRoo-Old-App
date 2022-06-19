@@ -1,0 +1,30 @@
+[
+	{
+		"pkg": "@capacitor/app",
+		"classpath": "com.capacitorjs.plugins.app.AppPlugin"
+	},
+	{
+		"pkg": "@capacitor/camera",
+		"classpath": "com.capacitorjs.plugins.camera.CameraPlugin"
+	},
+	{
+		"pkg": "@capacitor/haptics",
+		"classpath": "com.capacitorjs.plugins.haptics.HapticsPlugin"
+	},
+	{
+		"pkg": "@capacitor/push-notifications",
+		"classpath": "com.capacitorjs.plugins.pushnotifications.PushNotificationsPlugin"
+	},
+	{
+		"pkg": "@capacitor/status-bar",
+		"classpath": "com.capacitorjs.plugins.statusbar.StatusBarPlugin"
+	},
+	{
+		"pkg": "@transistorsoft/capacitor-background-fetch",
+		"classpath": "com.transistorsoft.bgfetch.capacitor.BackgroundFetchPlugin"
+	},
+	{
+		"pkg": "@transistorsoft/capacitor-background-geolocation",
+		"classpath": "com.transistorsoft.bggeo.capacitor.BackgroundGeolocationPlugin"
+	}
+]

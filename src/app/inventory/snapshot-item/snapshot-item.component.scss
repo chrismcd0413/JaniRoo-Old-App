@@ -1,0 +1,25 @@
+list-item {
+  display: flex;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 5px;
+}
+ion-item {
+  display: flex;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 5px;
+}
+ion-grid{
+  height: 100%;
+}
+ion-row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.textFormatting {
+  font-size: 14px;
+  padding-right: 10px;
+}

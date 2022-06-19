@@ -1,0 +1,40 @@
+<app-header title="Payments">
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false" menuId="first"></ion-menu-button>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-spinner slot="icon-only" *ngIf="isLoading"></ion-spinner>
+  </ion-buttons>
+</app-header>
+<ion-content>
+  <ion-row>
+    <ion-col size="12">
+      <ion-list>
+        <ion-item detail button (click)="goToSearch()">Search Timesheets</ion-item>
+
+      </ion-list>
+    </ion-col>
+
+      <!-- <ion-button expand="block" (onClick)="goToSearch()">Search Timesheets</ion-button> -->
+
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-header>Payments</ion-header>
+      <ion-list lines="full">
+        <ion-row
+          *ngFor="let payment of paymentsList; let i = index"
+          style="border-bottom-style: solid; border-bottom-color: lightgray; height: 50px; align-items: center;"
+          (click)="goToDetails(payment.payment[0], payment.start, payment.end)"
+        >
+          <ion-col size="9">
+            <ion-text>{{ payment.start }} - {{ payment.end }}</ion-text>
+          </ion-col>
+          <ion-col size="3" style="text-align: right; padding-right: 20px;">
+            <ion-text>${{ payment.payment[0].amount }}</ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-content>

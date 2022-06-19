@@ -1,0 +1,40 @@
+ ion-item{ --border-color: rgb(255, 255, 255); }
+
+.md ion-list {
+  padding: 0px;
+}
+.complete ion-item{
+  --background: rgb(0, 78, 0);
+  color: white;
+  --border-color: rgb(0, 78, 0);
+}
+.exception ion-item{
+  --background: rgb(124, 124, 0);
+  color: black;
+  --border-color: rgb(124, 124, 0);
+}
+.complete ion-label p{
+  color: white;
+}
+.exception ion-label p{
+  color: black;
+}
+.ontime {
+  color: black;
+  background: white;
+  font-size: medium;
+  font-weight: bold;
+}
+.late {
+  color: white;
+  background: red;
+  font-size: medium;
+  font-weight: bold;
+}
+.checklistFinished {
+  color: rgb(0, 78, 0);
+  background: white;
+  font-size: medium;
+  font-weight: bold;
+}
+

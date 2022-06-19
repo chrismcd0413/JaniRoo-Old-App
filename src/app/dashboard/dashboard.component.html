@@ -1,0 +1,120 @@
+<app-header title="Dashboard">
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false" menuId="first"></ion-menu-button>
+  </ion-buttons>
+  <!-- <ion-button fill="none" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button> -->
+  <ion-buttons slot="end">
+    <ion-spinner slot="icon-only" *ngIf="isLoadingData"></ion-spinner>
+  </ion-buttons>
+</app-header>
+
+<ion-content>
+  <ion-refresher
+    slot="fixed"
+    (ionRefresh)="refreshShifts(refresher)"
+    #refresher
+  >
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="lines"
+      refreshingText="Refreshing..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-label *ngIf="noShifts" class="noShifts">
+          <h1>No Shifts Available</h1>
+        </ion-label>
+        <ion-list *ngIf="!noShifts">
+          <ion-card *ngFor="let shift of loadedShifts">
+            <ion-card-header>
+              <ion-card-title>{{ shift.location }}</ion-card-title>
+              <ion-card-subtitle
+                >{{
+                  shift.type === "Flex" ? "Check in after: " : "Start Time: "
+                }}
+                {{ shift.startTime | date: "M/d/yy h:mm a" }}
+              </ion-card-subtitle>
+              <ion-card-subtitle
+                >{{
+                  shift.type === "Flex" ? "Check in before: " : "End Time: "
+                }}
+                {{ shift.endTime | date: "M/d/yy h:mm a" }}
+              </ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-spinner
+                *ngIf="
+                  activeTimecard &&
+                  isLoading &&
+                  activeTimecard.activeShiftId === shift.shiftId
+                "
+                name="dots"
+              ></ion-spinner>
+              <ion-button
+                *ngIf="!isLoading && activeTimecard.activeShiftId === '0'"
+                (click)="toggleClockIn(shift)"
+                expand="block"
+                fill="outline"
+                >Check In</ion-button
+              >
+              <ion-button
+                *ngIf="
+                  activeTimecard &&
+                  !isLoading &&
+                  activeTimecard.activeShiftId === shift.shiftId &&
+                  activeTimecard.onBreak === false
+                "
+                (click)="toggleBreak(activeTimecard)"
+                expand="block"
+                color="warning"
+                >Go On Break</ion-button
+              >
+              <ion-button
+                *ngIf="
+                  activeTimecard &&
+                  !isLoading &&
+                  activeTimecard.activeShiftId === shift.shiftId &&
+                  activeTimecard.onBreak === true
+                "
+                (click)="toggleBreak(activeTimecard)"
+                expand="block"
+                color="warning"
+                >End Break</ion-button
+              >
+              <ion-button
+                *ngIf="
+                  activeTimecard &&
+                  !isLoading &&
+                  activeTimecard.activeShiftId === shift.shiftId &&
+                  activeTimecard.onBreak === false
+                "
+                (click)="clockout(activeTimecard)"
+                expand="block"
+                color="danger"
+                >Check Out</ion-button
+              >
+              <ion-button
+                *ngIf="
+                  activeTimecard &&
+                  !isLoading &&
+                  activeTimecard.activeShiftId === shift.shiftId
+                "
+                [routerLink]="['/', 'tasks', shift.shiftId]"
+                expand="block"
+                fill="none"
+                >Go to Tasks</ion-button
+              >
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

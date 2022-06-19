@@ -1,0 +1,43 @@
+<app-header title="Tasks">
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/"></ion-back-button>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-spinner slot="icon-only" *ngIf="isLoading"></ion-spinner>
+  </ion-buttons>
+</app-header>
+
+<ion-content fullscreen="true">
+  <ion-grid style="padding: 0%; margin: 0%">
+    <ion-row style="padding: 0%; margin: 0%" *ngIf="totalTasks > 0">
+      <ion-col style="padding: 0%; margin: 0%">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Monthly Tasks</ion-card-title>
+            <ion-card-subtitle>{{completeTasks}} / {{totalTasks}} Completed</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-button expand="block" fill="outline" routerLink="monthly"
+              >View List</ion-button
+            >
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row style="padding: 0%; margin: 0%">
+      <ion-col style="padding: 0%; margin: 0%">
+        <app-task-list (compTasks)="updateCompTasks($event)" (totalTasks)="updateTotalTasks($event)"></app-task-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<!-- <ion-card>
+  <ion-card-header>
+    <ion-card-title>Monthly Tasks</ion-card-title>
+    <ion-card-subtitle>10 / 36 Completed</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-button expand="block" fill="outline" routerLink="monthly">View List</ion-button>
+  </ion-card-content>
+</ion-card> -->

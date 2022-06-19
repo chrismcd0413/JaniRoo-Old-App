@@ -1,0 +1,6 @@
+{
+	"appId": "com.jmcleanco.workapp",
+	"appName": "JMCleanCo Work",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

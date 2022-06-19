@@ -1,0 +1,80 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <h2>Tasks</h2>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-no-padding">
+    <ion-col>
+      <ion-list>
+        <ion-item-group *ngFor="let checklist of zlist">
+          <ion-item-divider sticky="true"
+          [ngClass]="setDividerClass(checklist.dueDate, checklist)">
+            <ion-label slot="start"
+            *ngIf="!isMonthlyList">
+              {{checklist.checklistName}}
+            </ion-label>
+            <ion-label slot="start"
+            *ngIf="isMonthlyList">
+              {{checklist.zone}}
+            </ion-label>
+          <ion-label *ngIf="!isMonthlyList && checklist.difference > 0 && checklist.totalTasks > checklist.completedTasks"
+          slot="end" style="font-size: small; font-weight: 600; padding-right: 10px;">
+            {{checklist.HH}}hrs {{checklist.MM}}min
+          </ion-label>
+          <ion-label *ngIf="!isMonthlyList && checklist.difference < 0 && checklist.totalTasks > checklist.completedTasks"
+          slot="end" style="font-size: small; font-weight: 600; padding-right: 10px;">
+            Late!
+          </ion-label>
+          <ion-label *ngIf="!isMonthlyList && checklist.totalTasks === checklist.completedTasks"
+          slot="end" style="font-size: small; font-weight: 600; padding-right: 10px;">
+            Done!
+          </ion-label>
+        </ion-item-divider>
+          <ion-item-sliding *ngFor="let task of checklist.tasks; let i = index"
+          [ngClass]="{'complete': task.status === 'Completed', 'exception': task.status === 'Exception'}"
+           #item>
+            <ion-item lines="full">
+              <ion-label class="ion-text-wrap">
+                <h2>{{task.title}}</h2>
+                <p>{{ task.description }}</p>
+                <p *ngIf="isMonthlyList && task.cleaner !== ''" style="font-weight: 700;">Completed By: {{task.cleaner}}</p>
+              </ion-label>
+              <ion-icon name="camera-outline" color="danger" slot="end" *ngIf="task.photoReq"></ion-icon>
+
+            </ion-item>
+
+            <ion-item-options side="end">
+
+              <ion-item-option color="warning"
+              *ngIf="task.status !== 'Completed' && task.status !== 'Exception'"
+              (click)="reportException(task.id, i, item)"
+              >
+                <ion-icon slot="icon-only" name="alert-outline"></ion-icon>
+
+              </ion-item-option>
+              <ion-item-option color="success"
+              *ngIf="task.photoReq && task.status !== 'Exception' && task.status !== 'Completed'"
+              (click)="takePhoto(task.id, i, item)">
+                <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
+
+              </ion-item-option>
+              <ion-item-option color="success" *ngIf="task.status !== 'Completed' && task.status !== 'Exception' && !task.photoReq"
+              (click)="completeTask(task.id, i, item)">
+                <ion-icon slot="icon-only" name="checkmark-outline"></ion-icon>
+
+              </ion-item-option>
+              <ion-item-option color="danger" *ngIf="task.status === 'Completed' || task.status === 'Exception'"
+              (click)="uncompleteTask(task.id, i, item)">
+                <ion-icon slot="icon-only" name="arrow-undo-circle-outline"></ion-icon>
+
+              </ion-item-option>
+
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-item-group>
+
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>

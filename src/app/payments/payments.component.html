@@ -1,0 +1,140 @@
+<app-header title="Timesheets">
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/"></ion-back-button>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-spinner slot="icon-only" *ngIf="isLoading"></ion-spinner>
+  </ion-buttons>
+</app-header>
+<ion-content fullscreen="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        style="
+          background-color: rgb(54, 54, 54);
+          border-radius: 5px;
+          margin: 10px;
+        "
+      >
+        <ion-text style="font-size: large; font-weight: bold; color: white"
+          >Search Timesheets</ion-text
+        >
+        <ion-item
+          style="
+            --ion-item-background: rgb(54, 54, 54);
+            padding-bottom: 10px;
+            padding-top: 10px;
+          "
+          lines="none"
+        >
+          <ion-label
+            style="
+              width: 75px;
+              text-align: right;
+              padding-right: 10px;
+              font-size: small;
+            "
+            >Start Time:</ion-label
+          >
+          <ion-input
+            type="date"
+            (ionChange)="setStartDate()"
+            #startDate
+            style="border: solid 1px white; border-radius: 5px; height: 40px"
+            value="today"
+          ></ion-input>
+        </ion-item>
+        <ion-item
+          style="--ion-item-background: rgb(54, 54, 54); padding-bottom: 10px"
+          lines="none"
+        >
+          <ion-label
+            style="
+              width: 75px;
+              text-align: right;
+              padding-right: 10px;
+              font-size: small;
+            "
+            >End Time:</ion-label
+          >
+          <ion-input
+            type="date"
+            (ionChange)="setEndDate()"
+            #endDate
+            style="border: solid 1px white; border-radius: 5px; height: 40px"
+          ></ion-input>
+        </ion-item>
+        <ion-button
+          (click)="searchTimesheets()"
+          [disabled]="disabled"
+          style="
+            width: 100%;
+            display: block;
+            padding-left: 10px;
+            padding-right: 10px;
+          "
+          >Search</ion-button
+        >
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list *ngIf="timesheetList.length > 0">
+          <ion-row
+            *ngFor="let item of timesheetList"
+            style="
+              border-bottom-style: solid;
+              border-bottom-width: 1px;
+              border-bottom-color: white;
+              display: flex;
+              align-items: center;
+            "
+          >
+            <ion-col size="9">
+              <ion-row>
+                <ion-col>
+                  <ion-text *ngIf="item.locationName !== ''">{{
+                    item.locationName
+                  }}</ion-text>
+                  <ion-text *ngIf="item.locationName === ''"
+                    >Location Unknown</ion-text
+                  >
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-text>In: {{ item.startTime }}</ion-text>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-text *ngIf="item.endTime !== ''"
+                    >Out: {{ item.endTime }}</ion-text
+                  >
+                  <ion-text *ngIf="item.endTime === ''">Out: On-Duty</ion-text>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-text *ngIf="item.endTime !== ''"
+                    >Hrs: {{ item.hoursWorked }}</ion-text
+                  >
+                  <ion-text *ngIf="item.endTime === ''">Hrs: Pending</ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col
+              size="3"
+              class="ion-justify-content-center ion-align-items-center"
+              style="height: 100%"
+            >
+              <ion-chip *ngIf="item.isBreak === 'yes'" color="warning">
+                <ion-label color="dark">Break</ion-label>
+              </ion-chip>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,15 @@
+<div [formGroup]="form">
+  <ion-row>
+    <ion-col>
+      <ion-item class="ion-no-padding">
+        <ion-label position="fixed" class="list-item ion-text-wrap textFormatting">{{item.label}} ({{item.unit}})</ion-label>
+      <ion-input placeholder="Enter Quantity" type="number"
+      [id]="item.id" [formControlName]="item.id"
+      inputmode="numeric" clearOnEdit="true" class="list-item" style="padding-bottom: 3px; text-align: center;"></ion-input>
+      </ion-item>
+    </ion-col>
+
+  </ion-row>
+
+</div>
+

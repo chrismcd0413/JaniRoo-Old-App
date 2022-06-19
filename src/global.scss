@@ -1,0 +1,108 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.monthview-primary-with-event {
+  background-color: rgba(128, 0, 128, 0.60) !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+.monthview-secondary-with-event {
+  background-color: rgba(128, 0, 128, 0.40) !important;
+  color: rgba(255, 255, 255, 0.40) !important;
+  font-weight: bold !important;
+}
+
+.monthview-current {
+  background-color: rgba(40, 26, 167, 0.6) !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+.monthview-selected {
+  background-color: rgba(15, 167, 10, 0.6) !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+.monthview-disabled {
+  color: brown !important;
+}
+.monthview-datetable td.monthview-disabled {
+  cursor: default !important;
+}
+.monthview-datetable th {
+  text-align: center !important;
+  color: white !important;
+}
+.monthview-datetable td {
+  cursor: pointer !important;
+  text-align: center !important;
+  color: rgba(170, 170, 170, 0.75) !important;
+}
+.weekview-with-event {
+  background-color: rgba(128, 0, 128, 0.60) !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+
+.weekview-current {
+  background-color: rgba(40, 26, 167, 0.6) !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+.weekview-selected {
+  background-color: rgba(15, 167, 10, 0.6) !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+.weekview-disabled {
+  color: brown !important;
+}
+.weekview-datetable td.weekview-disabled {
+  cursor: default !important;
+}
+.weekview-datetable th {
+  text-align: center !important;
+  color: white !important;
+}
+.weekview-datetable td {
+  cursor: pointer !important;
+  text-align: center !important;
+  color: rgba(170, 170, 170, 0.75) !important;
+}
+.calDetailText{
+  height: 100%;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.event-detail-container
+{
+overflow-y: scroll;
+display:flex;
+flex-direction:column;
+}

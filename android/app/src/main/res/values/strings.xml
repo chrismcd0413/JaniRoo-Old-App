@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">JMCleanCo Work</string>
+    <string name="title_activity_main">JMCleanCo Work</string>
+    <string name="package_name">com.jmcleanco.workapp</string>
+    <string name="custom_url_scheme">com.jmcleanco.workapp</string>
+</resources>

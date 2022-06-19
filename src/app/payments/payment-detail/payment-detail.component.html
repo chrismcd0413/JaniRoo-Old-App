@@ -1,0 +1,117 @@
+<app-header [title]="title">
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/"></ion-back-button>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-spinner slot="icon-only" *ngIf="isLoading"></ion-spinner>
+  </ion-buttons>
+</app-header>
+<ion-content>
+  <ion-row>
+    <ion-col style="align-items: center; text-align: center">
+      <h1>${{ payment.amount }}</h1>
+      <p>Total</p>
+    </ion-col>
+  </ion-row>
+  <ion-row
+    style="
+      padding-top: 5px;
+      padding-bottom: 0px;
+      padding-left: 20px;
+      padding-right: 5px;
+    "
+  >
+    <h3>Details</h3>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-list style="background-color: transparent">
+        <ion-accordion-group
+          expand="inset"
+          *ngFor="let loc of payment.location_data; let i = index"
+        >
+          <ion-accordion>
+            <ion-item
+              slot="header"
+              class="ion-justify-content-center ion-align-items-center"
+              style="height: 100%"
+            >
+              <ion-label slot="start" class="ion-text-wrap">{{
+                loc.location
+              }}</ion-label>
+                <ion-label style="text-align: right" slot="end"
+                *ngIf="loc.amount !== ''"
+                  >${{ loc.amount }}</ion-label
+                >
+                <ion-label style="text-align: right" slot="end"
+                *ngIf="loc.amount === ''"
+                  >$0.00</ion-label
+                >
+
+              <!-- <ion-note slot="end" class="second-item-label">$1999.99</ion-note> -->
+            </ion-item>
+            <ion-list slot="content" lines="full">
+              <ion-item *ngFor="let ts of loc.timesheets">
+                <ion-label slot="start" class="ion-text-wrap"
+                  >{{ ts.in }}-{{ ts.out }}</ion-label
+                >
+                <ion-label slot="end" style="text-align: center; width: 50px;">
+                  {{ ts.hrs }}
+                <br>hrs
+                </ion-label>
+                <ion-chip
+                  color="warning"
+                  *ngIf="ts.isBreak === 'yes'"
+                >
+                  Break
+                </ion-chip>
+              </ion-item>
+            </ion-list>
+          </ion-accordion>
+        </ion-accordion-group>
+        <ion-accordion-group expand="inset">
+          <ion-accordion value="otp">
+            <ion-item slot="header" style="height: 100%">
+              <ion-label slot="start" class="ion-text-wrap"
+                >One-Time Payments</ion-label
+              >
+              <ion-label slot="end"
+                >${{ sumNumbers(payment.otp) }}</ion-label
+              >
+            </ion-item>
+            <ion-list slot="content">
+              <ion-item *ngFor="let otp of payment.otp">
+                <ion-label slot="start" class="ion-text-wrap">{{
+                  otp.reason
+                }}</ion-label>
+                <ion-chip slot="end" style="background-color: transparent"
+                  >${{ otp.amount }}</ion-chip
+                >
+              </ion-item>
+            </ion-list>
+          </ion-accordion>
+        </ion-accordion-group>
+        <ion-accordion-group expand="inset">
+          <ion-accordion value="deductions">
+            <ion-item slot="header">
+              <ion-label class="ion-text-wrap" slot="start"
+                >Deductions</ion-label
+              >
+              <ion-label slot="end"
+                >${{ sumNumbers(payment.deductions) }}</ion-label
+              >
+            </ion-item>
+            <ion-list slot="content">
+              <ion-item *ngFor="let ded of payment.deductions">
+                <ion-label slot="start" class="ion-text-wrap">{{
+                  ded.reason
+                }}</ion-label>
+                  <ion-label slot="end">${{ ded.amount }}</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-accordion>
+        </ion-accordion-group>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-content>

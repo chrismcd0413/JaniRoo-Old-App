@@ -1,0 +1,21 @@
+<app-header title="Submit Inventory">
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false" menuId="first"></ion-menu-button>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-spinner slot="icon-only" *ngIf="isLoadingData"></ion-spinner>
+  </ion-buttons>
+</app-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list *ngIf="inventoryList.length > 0">
+          <ion-item (click)="enterLocationInventory(location.locId)" *ngFor="let location of inventoryList" detail button>
+            <ion-label>{{location.locName}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
